@@ -1,0 +1,154 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtc01ibiyegpj"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ah5e6"]
+[ext_resource type="PackedScene" uid="uid://cslibqpwtwx38" path="res://scene.tscn" id="1_cp7wy"]
+[ext_resource type="Script" path="res://ball.gd" id="3_qo2s7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ux87"]
+sky_horizon_color = Color(0.59625, 0.6135, 0.6375, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.592157, 0.603922, 0.619608, 1)
+
+[sub_resource type="Sky" id="Sky_b0ldo"]
+sky_material = SubResource("ProceduralSkyMaterial_4ux87")
+
+[sub_resource type="Environment" id="Environment_qg56a"]
+background_mode = 2
+sky = SubResource("Sky_b0ldo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_up5s5"]
+friction = 0.0
+bounce = 0.95
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_idrw6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ij3yw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8gfn"]
+
+[sub_resource type="SystemFont" id="SystemFont_xgcyb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kkwn1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sle3a"]
+transparency = 1
+blend_mode = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_aikre"]
+material = SubResource("StandardMaterial3D_sle3a")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_x4b2q"]
+properties/0/path = NodePath("../ScoreA:text")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("../ScoreB:text")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("../Countdown:text")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("../Ball:position")
+properties/3/spawn = true
+properties/3/sync = true
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_ah5e6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qg56a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.586881, -0.707394, 0.393909, -0.514022, 0.0503714, 0.856296, -0.625581, -0.705022, -0.334054, 0, 32.1307, -118.626)
+light_energy = 0.4
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="GameScene" parent="." instance=ExtResource("1_cp7wy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.086, 0)
+
+[node name="StartPositionA" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+
+[node name="StartPositionB" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0.5, -11.3)
+
+[node name="Activity" type="Node3D" parent="."]
+
+[node name="Ball" type="RigidBody3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52345, 1.31195, -7.5)
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_up5s5")
+continuous_cd = true
+script = ExtResource("3_qo2s7")
+
+[node name="Ball" type="CollisionShape3D" parent="Activity/Ball"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_idrw6")
+
+[node name="Ball" type="MeshInstance3D" parent="Activity/Ball/Ball"]
+mesh = SubResource("SphereMesh_ij3yw")
+skeleton = NodePath("../../../..")
+
+[node name="TablePartA" type="Area3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.1, -6.577)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Activity/TablePartA"]
+transform = Transform3D(3.07658, 0, 0, 0, 0.211033, 0, 0, 0, 2.64146, -0.00612736, 4.76837e-07, -0.00153923)
+shape = SubResource("BoxShape3D_m8gfn")
+
+[node name="TablePartB" type="Area3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.1, -9.428)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Activity/TablePartB"]
+transform = Transform3D(3.07658, 0, 0, 0, 0.211033, 0, 0, 0, 2.64146, 0, 0, 0)
+shape = SubResource("BoxShape3D_m8gfn")
+
+[node name="Countdown" type="Label3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00189, 1.92765, -7.9964)
+pixel_size = 0.01
+text = "5"
+font = SubResource("SystemFont_xgcyb")
+
+[node name="ResetScore" type="Area3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87682, 1.84444, -7.96641)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Activity/ResetScore"]
+transform = Transform3D(0.94004, 0, 0, 0, 2, 0, 0, 0, 5, -0.417179, 0, 0)
+shape = SubResource("BoxShape3D_kkwn1")
+
+[node name="ResetScore" type="Label3D" parent="Activity/ResetScore"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0719547, 0.0189695, 0.00621748)
+pixel_size = 0.01
+text = "Reset Score"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Activity/ResetScore"]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_aikre")
+
+[node name="ScoreA" type="Label3D" parent="Activity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -20)
+pixel_size = 0.05
+text = "0 : 0
+"
+
+[node name="ScoreB" type="Label3D" parent="Activity"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 6, 4)
+pixel_size = 0.05
+text = "0 : 0"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Activity"]
+root_path = NodePath(".")
+replication_config = SubResource("SceneReplicationConfig_x4b2q")

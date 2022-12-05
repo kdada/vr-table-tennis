@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://drqoe7fdef4m3"]
+
+[ext_resource type="Script" path="res://xr_origin.gd" id="1_aubco"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+current = true
+script = ExtResource("1_aubco")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+fov = 105.0
+far = 1000.0
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, 0)
+tracker = &"left_hand"
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0)
+tracker = &"right_hand"
+
+[node name="Front" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Right" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

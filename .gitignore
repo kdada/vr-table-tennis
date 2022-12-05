@@ -1,0 +1,6 @@
+# Godot 4+ specific ignores
+.godot/
+releases/
+android/build/.gradle
+android/build/build
+android/build/assets
