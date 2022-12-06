@@ -2,9 +2,11 @@
 A simple VR game made with Godot 4.0. It was made for Pico 4. Not sure if it will work on other platforms.
 
 Screenshot from Pico:
+
 ![Screenshot from Pico](./images/screenshot-pico.jpeg)
 
 Screenshot from server:
+
 ![Screenshot from server](./images/screenshot-server.png)
 
 # Modify the domain
@@ -28,7 +30,7 @@ Two ways:
 
 # Copyright Notice
 
-The materials used in this project come from the following address, and the relevant rights belong to the original author. The MIT license only affects the game code.
+The materials used in this project come from the following addresses, and the relevant rights belong to the original author. The MIT license only affects the game code.
 
 - [Modular Village Pack](https://fertile-soil-productions.itch.io/modular-village-pack) - Keith at Fertile Soil Productions
 - [Modular Terrain Pack](https://fertile-soil-productions.itch.io/modular-terrain-pack) - Keith at Fertile Soil Productions

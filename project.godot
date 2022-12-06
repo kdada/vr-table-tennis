@@ -23,7 +23,7 @@ _global_script_class_icons={
 config/name="vr-table-tennis"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
-run/max_fps=240
+run/max_fps=90
 config/icon="res://icon.svg"
 
 [debug]
