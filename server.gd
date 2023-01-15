@@ -32,7 +32,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# 自由移动
+	# Move freely.
 	if Input.is_action_pressed("move_right"):
 		self.position.z -= delta * self.move_speed
 	if Input.is_action_pressed("move_left"):

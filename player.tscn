@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_qaqfp"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_jky5a"]
+[sub_resource type="BoxMesh" id="BoxMesh_83cuq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_3boir"]
+[sub_resource type="BoxMesh" id="BoxMesh_88kfg"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ko21e"]
+[sub_resource type="BoxMesh" id="BoxMesh_jbrg7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_gayla"]
+[sub_resource type="BoxMesh" id="BoxMesh_0yd5t"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i3ass"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r1si4"]
 properties/0/path = NodePath("..:transform_head")
 properties/0/spawn = true
 properties/0/sync = true
@@ -32,25 +32,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Head" type="MeshInstance3D" parent="Head"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("BoxMesh_jky5a")
+mesh = SubResource("BoxMesh_83cuq")
 
 [node name="LeftHand" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, 0)
 
 [node name="Hand" type="MeshInstance3D" parent="LeftHand"]
 transform = Transform3D(0.1, 0, 0, 0, 0.0866025, -0.05, 0, 0.05, 0.0866025, 0, -0.015, 0.008)
-mesh = SubResource("BoxMesh_3boir")
+mesh = SubResource("BoxMesh_88kfg")
 
 [node name="RightHand" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0)
 
 [node name="Hand" type="MeshInstance3D" parent="RightHand"]
 transform = Transform3D(0.1, 0, 0, 0, 0.0866025, -0.05, 0, 0.05, 0.0866025, 0, -0.0146082, 0.00844159)
-mesh = SubResource("BoxMesh_ko21e")
+mesh = SubResource("BoxMesh_jbrg7")
 
 [node name="Racket" type="MeshInstance3D" parent="RightHand"]
 transform = Transform3D(0.03, 0, 0, 0, 0.259808, -0.15, 0, 0.15, 0.259808, 0, 0.0836246, -0.165293)
-mesh = SubResource("BoxMesh_gayla")
+mesh = SubResource("BoxMesh_0yd5t")
 skeleton = NodePath("")
 
 [node name="Forward" type="Node3D" parent="RightHand"]
@@ -58,4 +58,4 @@ transform = Transform3D(0.03, 0, 0, 0, 0.259808, -0.15, 0, 0.15, 0.259808, -1, 0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 root_path = NodePath(".")
-replication_config = SubResource("SceneReplicationConfig_i3ass")
+replication_config = SubResource("SceneReplicationConfig_r1si4")

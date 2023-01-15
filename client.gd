@@ -16,7 +16,9 @@ func _ready() -> void:
 	self.xr_left_hand = self.xr_origin.get_node("LeftHand")
 	self.xr_right_hand = self.xr_origin.get_node("RightHand")
 	self.xr_origin.transform = self.start_transform_a
-	self.add_child(self.xr_origin)
+	self.get_parent().move_child(self, 0)
+	self.get_parent().add_child(self.xr_origin)
+	self.get_parent().move_child(self.xr_origin, 0)
 
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client("YOUR_DOMAIN_OR_IP",19979)

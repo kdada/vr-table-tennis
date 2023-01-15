@@ -18,15 +18,33 @@ This game is a multiplayer game. Domain or public IP needs to be set before runn
 ## Start the server
 
 ```
-$ /path/to/godot/bin/godot.windows.editor.x86_64.console.exe --path /path/to/vr-table-tennis --server
+$ /path/to/godot/bin/godot.windows.editor.x86_64.console.exe --path /path/to/vr-table-tennis --server --xr-mode off
 ```
 
 ## Run the game
 
 Two ways:
 1. Export an apk and install it to Pico. Then run it on Pico.
-2. Click the android icon on the right top of Godot project manager. It will automatically export/install/run the game on the device.
+2. Click the [Remote Debug] icon on the right top of Godot project manager. It will automatically export/install/run the game on the target device.
 
+# Game Instructions
+
+## Server
+
+| Instruction | Description                                      |
+|-------------|--------------------------------------------------|
+| W/A/S/D     | Move observer camera forward/left/backward/right |
+| Q/E         | Move observer camera down/up                     |
+
+## Client
+
+| Controller | Instruction | Description                      |
+|------------|-------------|----------------------------------|
+| Left Hand  | Thumbstick  | Move forward/left/backward/right |
+|            | X/Y         | Moving speed down/up             |
+| Right Hand | Thumbstick  | Turn left/right                       |
+|            | A/B         | Steering speed down/up           |
+|            | Pose        | Control the paddle               |
 
 # Copyright Notice
 
