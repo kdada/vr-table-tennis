@@ -16,10 +16,11 @@
     <application android:label="@string/godot_project_name_string"
         android:allowBackup="false"
         android:icon="@mipmap/icon"
+        android:appCategory="game"
         android:isGame="true"
         android:hasFragileUserData="false"
         android:requestLegacyExternalStorage="false"
-        tools:replace="android:allowBackup,android:isGame,android:hasFragileUserData,android:requestLegacyExternalStorage"
+        tools:replace="android:allowBackup,android:appCategory,android:isGame,android:hasFragileUserData,android:requestLegacyExternalStorage"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data tools:node="remove" android:name="xr_hand_tracking_version_name" />
